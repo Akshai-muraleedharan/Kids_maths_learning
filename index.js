@@ -53,16 +53,16 @@ const  speakTheQuestion = (max,symbol,min) => {
 // check arithmetic calculation
   if(arithmeticName === "addition"){
     let arithmeticValue = checkMaxValue + checkMinValue
-    sum = arithmeticValue
+    sum = arithmeticValue 
      arithmeticSymbol = "+"
 
      speakTheQuestion(checkMaxValue,"plus",checkMinValue)
     
-  }else if(arithmeticName === "substraction"){
+  }else if(arithmeticName === "substraction"){ 
     let arithmeticValue = checkMaxValue - checkMinValue
     sum = arithmeticValue
     arithmeticSymbol = "-"
-    speakTheQuestion(checkMaxValue,"substracted",checkMinValue)
+    speakTheQuestion(checkMaxValue,"substracted by",checkMinValue)
   }else if(arithmeticName === "multiplication"){
     let arithmeticValue = checkMaxValue * checkMinValue
     sum = arithmeticValue
