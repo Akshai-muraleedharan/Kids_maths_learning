@@ -1,98 +1,117 @@
-
-let headEle = document.querySelector('#head_ele')
+// for heading
+  let headEle = document.querySelector('#head_ele')
 
 
 // get url
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const arithmeticName  = urlParams.get('name')
-const levelName  = urlParams.get('level')
-headEle.innerHTML = `${arithmeticName} <br> <span style="font-size:18px">level ${levelName}</span>`
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const arithmeticName  = urlParams.get('name')
+  const levelName  = urlParams.get('level')
+  headEle.innerHTML = `${arithmeticName} <br> <span style="font-size:18px">level ${levelName}</span>`
 
 
+  const arithmeticStages = (numOne,numTwo) => {
+    
+      
+  const globalArr = []   
 
-
-
-
-
-const additionStages = (numOne,numTwo) => {
-  
-const globalArr = []   
-  // insert number to array 
-
+  // insert number to array for calculate
   for(let i = numOne ; i <= numTwo ; i++){
      globalArr.push(i)
   }
   
+  // random number for array refernce value
   let randomNumOne = Math.floor(Math.random() * globalArr.length )
   let randomNumTwo = Math.floor(Math.random() * globalArr.length )
 
 
+// the two varible for check max and min value 
+  const checkMaxValue = Math.max(globalArr[randomNumOne],globalArr[randomNumTwo])
+  const checkMinValue = Math.min(globalArr[randomNumOne],globalArr[randomNumTwo])
 
-const checkMaxValue = Math.max(globalArr[randomNumOne],globalArr[randomNumTwo])
-const checkMinValue = Math.min(globalArr[randomNumOne],globalArr[randomNumTwo])
+// The sum of calculation and arithemetic symbol for ui
+  let sum
+  let arithmeticSymbol
 
+// check arithmetic calculation
+  if(arithmeticName === "addition"){
+    let arithmeticValue = checkMaxValue + checkMinValue
+    sum = arithmeticValue
+     arithmeticSymbol = "+"
+  }else if(arithmeticName === "substraction"){
+    let arithmeticValue = checkMaxValue - checkMinValue
+    sum = arithmeticValue
+    arithmeticSymbol = "-"
+  }else if(arithmeticName === "multiplication"){
+    let arithmeticValue = checkMaxValue * checkMinValue
+    sum = arithmeticValue
+    arithmeticSymbol = "x"
+  }else{
+    let arithmeticValue = checkMaxValue / checkMinValue
+    sum = arithmeticValue.toFixed(2)
+    arithmeticSymbol = "/"
+  }
+ 
+// Three variables for user answer check
+  const sumAdd = sum + 3
+  const sumSub = sum - 4
+  const sumForLoop = sum - 1
 
-  const sum = checkMaxValue + checkMinValue
+ const dispalyNumbersArray = []
 
-const sumAdd = sum + 3
-const sumSub = sum - 4
-
-const sumForLoop = sum - 1
-
-  const dispalyNumbersArray = []
-
+//  To create values and push to arrays
   for ( let i = sum ; i < sumAdd; i++){
     dispalyNumbersArray.push(i)
   }
 
- for (let i = sumForLoop ; i > sumSub ; i--){
-  dispalyNumbersArray.unshift(i)
- }
-
- function shuffleArray(array) {
-
-  let newArray = [...array]; // Create a copy of the array
-  for (let i = newArray.length - 1; i > 0; i--) {
-      const randomIndex = Math.floor(Math.random() * (i + 1));
-      [newArray[i], newArray[randomIndex]] = [newArray[randomIndex], newArray[i]];
+  //  To create values and push to arrays
+  for (let i = sumForLoop ; i > sumSub ; i--){
+    dispalyNumbersArray.unshift(i)
   }
-  return newArray;
-}
+
+//  This function for dispalyNumbersArray values to shuffles
+  function shuffleArray(array) {
+
+    let newArray = [...array]; // Create a copy of the array
+    for (let i = newArray.length - 1; i > 0; i--) {
+        const randomIndex = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[randomIndex]] = [newArray[randomIndex], newArray[i]];
+    }
+    return newArray;
+  }
  
 
+// To get return values
+  let fun =  shuffleArray(dispalyNumbersArray)
 
- let fun =  shuffleArray(dispalyNumbersArray)
-
- console.log(fun)
-
+//  To hold the numbers from arrays below
  let numberHolderEle = document.querySelector('.number_holder')
- let outPut = '' 
+  let outPut = '' 
 
- fun.forEach((item) => {
-   outPut += `
-   <li >
-   <button class="number_holder_li">${item} </button>
-   </li>
-   `
- })
+  fun.forEach((item) => {
+    outPut += `
+    <li >
+    <button class="number_holder_li">${item} </button>
+    </li>
+    `
+  })
 
- numberHolderEle.innerHTML = outPut
+  numberHolderEle.innerHTML = outPut
+ //  To hold the numbers from arrays above
 
 
   let numberHolderLi = document.querySelectorAll('.number_holder_li')
   let numContainerEle = document.querySelector('.number_container')
 
 
+  // add animation
+    const addAnimation = () => {
   
- const addAnimation = () => {
-    
+     var randomNum = Math.floor(Math.random() * dispalyNumbersArray.length)
 
-        var randomNum = Math.floor(Math.random() * dispalyNumbersArray.length)
-
-        numberHolderLi[randomNum].classList.add('anime')  
+    numberHolderLi[randomNum].classList.add('anime')  
        
-  }
+   }
 
 
   setInterval(()=>{
@@ -100,24 +119,19 @@ const sumForLoop = sum - 1
 
   },2000)
 
- 
-  numberHolderLi.forEach(item => {
-    if(item.classList.length > 0) {
-      
-    setInterval(() => {
-   numberHolderLi.forEach(item => {
-     item.classList.remove('anime')
-   })
+//  remove animation
+    numberHolderLi.forEach(item => {
+      if(item.classList.length > 0) {
+        
+      setInterval(() => {
+    numberHolderLi.forEach(item => {
+      item.classList.remove('anime')
+    })
 
+      },9500)
+      }})
 
-    },9500)
-    }
-      })
-
-     
-       
-
-
+    //  for check anwser
       let answerEle = document.querySelector('.answer_container')
       let question = document.querySelector('.answer_container_holder')
   
@@ -128,7 +142,7 @@ const sumForLoop = sum - 1
     
       ansOut = `
       <li class="ans_list">${checkMaxValue}</li> 
-      <li style="font-size:23px; font-weight:600">  + </li>
+      <li style="font-size:23px; font-weight:600"> ${arithmeticSymbol} </li>
       <li class="ans_list">${checkMinValue}</li>
       <li style="font-size:23px; font-weight:600"> = </li>
       <li class="ans_list" id="answee">0</li>
@@ -137,7 +151,7 @@ const sumForLoop = sum - 1
 
       answerEle.innerHTML += ansOut
 
-    
+    // answer or correct variables
       let totalanswerEle = document.querySelector('#answee')
       let overlayEle = document.querySelector('#overlay-con')
       let overlayHead =document.querySelector('#overlay_head')
@@ -151,7 +165,7 @@ const sumForLoop = sum - 1
           totalanswerEle.textContent = item.textContent
 
           if(parseInt(sum) === parseInt(item.textContent)){
-            console.log("correct ans :",sum)
+          
 
             setTimeout(() => {
 
@@ -159,7 +173,7 @@ const sumForLoop = sum - 1
               numContainerEle.classList.add("displayRemove")
               question.classList.add("displayRemove")
               overlayHead.textContent = "Correct Answer"
-            },2000)
+            },1500)
 
             setTimeout(()=>{
               
@@ -168,7 +182,7 @@ const sumForLoop = sum - 1
               numContainerEle.classList.remove("displayRemove")
               overlayHead.textContent = ""
               window.location.reload()
-            },4000)
+            },3000)
           }else{
           
             setTimeout(() => {
@@ -178,7 +192,7 @@ const sumForLoop = sum - 1
               overlayHead.textContent = "wrong Answer"
               overlayHead.style.color =" red"
   
-            },2000)
+            },1500)
             setTimeout(()=>{
               
               overlayEle.classList.remove("overlay")
@@ -187,7 +201,7 @@ const sumForLoop = sum - 1
               overlayHead.textContent = ""
                overlayHead.style.color =""
               totalanswerEle.textContent = 0
-            },4000)
+            },3000)
           }
 
         })
@@ -204,15 +218,61 @@ const sumForLoop = sum - 1
 
 if(arithmeticName === "addition" && levelName === "one"){
  
-   additionStages(1,10)
+   arithmeticStages(1,10)
 
 }else if(arithmeticName === "addition" && levelName === "two"){
 
-  additionStages(11,100) 
+  arithmeticStages(11,100) 
 
-}else{
+}else if(arithmeticName === "addition" && levelName === "three"){
 
-  additionStages(100,1000)
+  arithmeticStages(100,1000)
+
+}
+
+
+
+if(arithmeticName === "substraction" && levelName === "one"){
+
+   arithmeticStages(1,10)
+
+} else if(arithmeticName === "substraction" && levelName === "two"){
+
+  arithmeticStages(11,100) 
+
+} else if(arithmeticName === "substraction" && levelName === "three"){
+
+  arithmeticStages(100,1000)
+
+}
+
+
+if(arithmeticName === "multiplication" && levelName === "one"){
+
+  arithmeticStages(1,10)
+
+} else if(arithmeticName === "multiplication" && levelName === "two"){
+
+ arithmeticStages(11,100) 
+
+} else if(arithmeticName === "multiplication" && levelName === "three"){
+
+ arithmeticStages(100,1000)
+
+}
+
+
+if(arithmeticName === "division" && levelName === "one"){
+
+  arithmeticStages(1,10)
+
+} else if(arithmeticName === "division" && levelName === "two"){
+
+ arithmeticStages(11,100) 
+
+} else if(arithmeticName === "division" && levelName === "three"){
+
+ arithmeticStages(100,1000)
 
 }
 
