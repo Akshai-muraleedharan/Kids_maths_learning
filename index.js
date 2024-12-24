@@ -10,6 +10,23 @@
   headEle.innerHTML = `${arithmeticName} <br> <span style="font-size:18px">level ${levelName}</span>`
 
 
+
+
+const  speakTheQuestion = (max,symbol,min) => {
+
+  
+  const utterance = new SpeechSynthesisUtterance(`${max} ${symbol} ${min} is equel to`)
+
+  utterance.lang = 'en-US';
+  utterance.volume = 1;
+  utterance.rate = 1;
+  utterance.pitch = 1;
+
+  window.speechSynthesis.speak(utterance)
+}
+
+
+
   const arithmeticStages = (numOne,numTwo) => {
     
       
@@ -38,18 +55,24 @@
     let arithmeticValue = checkMaxValue + checkMinValue
     sum = arithmeticValue
      arithmeticSymbol = "+"
+
+     speakTheQuestion(checkMaxValue,"plus",checkMinValue)
+    
   }else if(arithmeticName === "substraction"){
     let arithmeticValue = checkMaxValue - checkMinValue
     sum = arithmeticValue
     arithmeticSymbol = "-"
+    speakTheQuestion(checkMaxValue,"substracted",checkMinValue)
   }else if(arithmeticName === "multiplication"){
     let arithmeticValue = checkMaxValue * checkMinValue
     sum = arithmeticValue
     arithmeticSymbol = "x"
+    speakTheQuestion(checkMaxValue,"multiply by",checkMinValue)
   }else{
     let arithmeticValue = checkMaxValue / checkMinValue
     sum = arithmeticValue.toFixed(2)
     arithmeticSymbol = "/"
+    speakTheQuestion(checkMaxValue,"divided by",checkMinValue)
   }
  
 // Three variables for user answer check
