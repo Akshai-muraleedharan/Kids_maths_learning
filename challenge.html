@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kids math app</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <header >
+            <h1 class="heading"> Select your <br> challenge </h1>
+        </header>
+
+        <div class="btn_container">
+            <a href="./main.html" class="challenge_btn">Stage One</a>
+            <a href="./main.html" class="challenge_btn">Stage Two</a>
+            <a href="./main.html" class="challenge_btn">Stage Three</a>
+        </div>
+
+
+        <footer> 
+            <p>created by Akshai Muraleedharan</p>
+         </footer>
+    </div>
+
+
+    <script>
+
+        const sendUrl = document.querySelectorAll('.challenge_btn')
+
+        // get query params
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+         const arithmeticName  = urlParams.get('arithmetic')
+
+        //  add url link to <a> tag
+       sendUrl[0].setAttribute('href',`./main.html?name=${arithmeticName}&level=one`)
+       sendUrl[1].setAttribute('href',`./main.html?name=${arithmeticName}&level=two`)
+       sendUrl[2].setAttribute('href',`./main.html?name=${arithmeticName}&level=three`)
+
+     
+    </script>
+</body>
+</html>

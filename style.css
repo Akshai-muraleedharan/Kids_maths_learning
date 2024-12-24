@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", serif;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
+}
+
+.heading {
+  text-align: center;
+  font-weight: bold;
+  color: #6263bf;
+  padding-top: 50px;
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 10px 0px;
+}
+
+.btn_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: auto 0px auto 0px;
+}
+
+.maths_btn {
+  text-decoration: none;
+  display: block;
+  min-width: 150px;
+  padding: 0px 16px;
+  height: 42px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #8081ef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+}
+
+.challenge_btn{
+    text-decoration: none;
+    display: block;
+    min-width: 150px;
+    padding: 0px 16px;
+    height: 42px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #8081ef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.number_container{
+ width: 90%;
+ margin: 0px auto 0px auto;
+ margin-top: 20px;
+
+ border-radius: 10px;
+ background-color: #e6e6ff;
+padding: 20px;
+}
+
+
+.number_holder{
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.number_holder_li{
+  padding: 16px;
+  border-radius: 10px;
+  background-color: #cecfff;
+  min-width: 53px;
+  text-align: center;
+  box-shadow: 5px 4px 15px -7px;
+  cursor: pointer;
+  border: none;
+  font-weight: 900;
+  font-size: 19px;
+}
+
+.anime{
+  animation: shake  0.6s ease-in-out ;
+ 
+
+}
+@keyframes shake {
+ 0%{
+  transform: rotate(0deg)
+ }
+ 25%{
+  transform: rotate(-10deg)
+ }
+ 50%{
+  transform: rotate(10deg);
+ }
+ 75%{
+  transform: rotate(-10deg);
+ }
+ 100%{
+  transform: rotate(0deg);
+ }
+}
+
+
+
+/* answer container */
+
+.answer_container{
+  width: 90%;
+ margin: 0px auto 0px auto;
+ margin-top: 20px;
+ border-radius: 10px;
+ background-color: #e6e6ff;
+padding: 20px;
+cursor: default;
+
+}
+
+.ans_list{
+  padding: 13px;
+  border-radius: 10px;
+  background-color: #cecfff;
+  min-width: 50px;
+  text-align: center;
+  box-shadow: 5px 4px 15px -7px;
+  cursor: pointer;
+  border: none;
+  font-weight: 900;
+  font-size: 19px;
+}
+
+.overlay{
+  position: absolute;
+  background: rgb(2, 0, 36);
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.answer_container_holder{
+  display: flex;
+  justify-content: center;
+}
+
+.displayRemove{
+  display: none;
+}
+
+#overlay_head{
+  color: green;
+
+}
+
+
+@media screen and (min-width:1000px){
+    .maths_btn:hover{
+        background-color: #6466c2;
+    }
+
+    .number_container{
+      max-width: 590px;
+      
+    }
+    .answer_container{
+      width: 30%;
+    }
+}
