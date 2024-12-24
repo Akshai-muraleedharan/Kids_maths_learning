@@ -43,9 +43,9 @@ footer {
 .maths_btn {
   text-decoration: none;
   display: block;
-  min-width: 150px;
+  min-width: 180px;
   padding: 0px 16px;
-  height: 42px;
+  height: 53px;
   text-align: center;
   border-radius: 10px;
   background-color: #8081ef;
@@ -59,9 +59,9 @@ footer {
 .challenge_btn{
     text-decoration: none;
     display: block;
-    min-width: 150px;
+    min-width: 170px;
     padding: 0px 16px;
-    height: 42px;
+    height: 50px;
     text-align: center;
     border-radius: 10px;
     background-color: #8081ef;
