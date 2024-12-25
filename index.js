@@ -22,8 +22,41 @@ const  speakTheQuestion = (max,symbol,min) => {
   utterance.rate = 1;
   utterance.pitch = 1;
 
+  document.addEventListener('visibilitychange',() => {
+
+    if(document.hidden) {
+      window.speechSynthesis.cancel()
+    }
+  
+  })
+
   window.speechSynthesis.speak(utterance)
+  
 }
+
+
+
+const  answerCheckCorrectOrWrong = (ans) => {
+ 
+  const utterance = new SpeechSynthesisUtterance(`Your answer is ${ans}`)
+
+  utterance.lang = 'en-US';
+  utterance.volume = 1;
+  utterance.rate = 1;
+  utterance.pitch = 1;
+
+  document.addEventListener('visibilitychange',() => {
+
+    if(document.hidden) {
+      window.speechSynthesis.cancel()
+    }
+  
+  })
+
+  window.speechSynthesis.speak(utterance)
+  }
+
+
 
 
 
@@ -72,7 +105,7 @@ const  speakTheQuestion = (max,symbol,min) => {
     let arithmeticValue = checkMaxValue / checkMinValue
     sum = arithmeticValue.toFixed(2)
     arithmeticSymbol = "/"
-    speakTheQuestion(checkMaxValue,"divided by",checkMinValue)
+    speakTheQuestion(checkMaxValue,"divided  by",checkMinValue)
   }
  
 // Three variables for user answer check
@@ -179,7 +212,16 @@ const  speakTheQuestion = (max,symbol,min) => {
       let overlayEle = document.querySelector('#overlay-con')
       let overlayHead =document.querySelector('#overlay_head')
 
-
+        
+      const buttonDisabled = (wrong) => {
+        numberHolderLi.forEach((item)=> {
+         if(wrong === "wrong"){
+          item.removeAttribute('disabled')
+         }else{
+          item.setAttribute('disabled',true)
+         }
+        })
+      }
    
 
       numberHolderLi.forEach((item) => {
@@ -187,16 +229,24 @@ const  speakTheQuestion = (max,symbol,min) => {
 
           totalanswerEle.textContent = item.textContent
 
+
+          if(totalanswerEle){
+            buttonDisabled()
+          }
+
           if(parseInt(sum) === parseInt(item.textContent)){
           
-
+            
             setTimeout(() => {
 
               overlayEle.classList.add("overlay") 
               numContainerEle.classList.add("displayRemove")
               question.classList.add("displayRemove")
               overlayHead.textContent = "Correct Answer"
+              answerCheckCorrectOrWrong('Correct')
             },1500)
+
+          
 
             setTimeout(()=>{
               
@@ -204,6 +254,7 @@ const  speakTheQuestion = (max,symbol,min) => {
               question.classList.remove("displayRemove")
               numContainerEle.classList.remove("displayRemove")
               overlayHead.textContent = ""
+              buttonDisabled('wrong')
               window.location.reload()
             },3000)
           }else{
@@ -214,8 +265,11 @@ const  speakTheQuestion = (max,symbol,min) => {
               question.classList.add("displayRemove")
               overlayHead.textContent = "wrong Answer"
               overlayHead.style.color =" red"
-  
+              answerCheckCorrectOrWrong('Wrong')
+             
             },1500)
+
+            
             setTimeout(()=>{
               
               overlayEle.classList.remove("overlay")
@@ -224,20 +278,20 @@ const  speakTheQuestion = (max,symbol,min) => {
               overlayHead.textContent = ""
                overlayHead.style.color =""
               totalanswerEle.textContent = 0
+              buttonDisabled('wrong')
             },3000)
           }
 
         })
       })
 
+
+      
+
     
 }
 
 
-
-
-
- 
 
 if(arithmeticName === "addition" && levelName === "one"){
  
