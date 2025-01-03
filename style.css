@@ -140,6 +140,7 @@ padding: 20px;
  background-color: #e6e6ff;
 padding: 20px;
 cursor: default;
+flex-wrap: wrap;
 
 }
 
