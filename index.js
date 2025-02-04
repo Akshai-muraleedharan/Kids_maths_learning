@@ -35,7 +35,6 @@ const  speakTheQuestion = (max,symbol,min) => {
 }
 
 
-
 const  answerCheckCorrectOrWrong = (ans) => {
  
   const utterance = new SpeechSynthesisUtterance(`Your answer is ${ans}`)
@@ -57,12 +56,8 @@ const  answerCheckCorrectOrWrong = (ans) => {
   }
 
 
-
-
-
   const arithmeticStages = (numOne,numTwo) => {
-    
-      
+        
   const globalArr = []   
 
   // insert number to array for calculate
@@ -138,13 +133,13 @@ const  answerCheckCorrectOrWrong = (ans) => {
  
 
 // To get return values
-  let fun =  shuffleArray(dispalyNumbersArray)
+  let shuffleArrayValues =  shuffleArray(dispalyNumbersArray)
 
 //  To hold the numbers from arrays below
  let numberHolderEle = document.querySelector('.number_holder')
   let outPut = '' 
 
-  fun.forEach((item) => {
+  shuffleArrayValues.forEach((item) => {
     outPut += `
     <li >
     <button class="number_holder_li">${item} </button>
@@ -192,10 +187,7 @@ const  answerCheckCorrectOrWrong = (ans) => {
       let question = document.querySelector('.answer_container_holder')
   
    
-      let ansOut = ''
-  
-
-    
+      let ansOut = '';
       ansOut = `
       <li class="ans_list">${checkMaxValue}</li> 
       <li style="font-size:23px; font-weight:600"> ${arithmeticSymbol} </li>
@@ -276,7 +268,7 @@ const  answerCheckCorrectOrWrong = (ans) => {
               question.classList.remove("displayRemove")
               numContainerEle.classList.remove("displayRemove")
               overlayHead.textContent = ""
-               overlayHead.style.color =""
+              overlayHead.style.color =""
               totalanswerEle.textContent = 0
               buttonDisabled('wrong')
             },3000)

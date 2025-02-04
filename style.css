@@ -73,6 +73,7 @@ footer {
     font-weight: 600;
 }
 
+
 .number_container{
  width: 90%;
  margin: 0px auto 0px auto;
@@ -196,5 +197,8 @@ flex-wrap: wrap;
     }
     .answer_container{
       width: 30%;
+    }
+    .challenge_btn:hover{
+      background-color: #6466c2;
     }
 }
