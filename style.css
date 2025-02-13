@@ -21,7 +21,8 @@
   text-align: center;
   font-weight: bold;
   color: #6263bf;
-  padding-top: 50px;
+  margin-top: 50px;
+  margin-bottom: 10px;
 }
 
 footer {
@@ -78,10 +79,9 @@ footer {
  width: 90%;
  margin: 0px auto 0px auto;
  margin-top: 20px;
-
  border-radius: 10px;
  background-color: #e6e6ff;
-padding: 20px;
+ padding: 20px;
 }
 
 
@@ -135,13 +135,13 @@ padding: 20px;
 
 .answer_container{
   width: 90%;
- margin: 0px auto 0px auto;
- margin-top: 20px;
- border-radius: 10px;
- background-color: #e6e6ff;
-padding: 20px;
-cursor: default;
-flex-wrap: wrap;
+  margin: 0px auto 0px auto;
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: #e6e6ff;
+  padding: 20px;
+  cursor: default;
+  flex-wrap: wrap;
 
 }
 

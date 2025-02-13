@@ -7,14 +7,11 @@
   const urlParams = new URLSearchParams(queryString);
   const arithmeticName  = urlParams.get('name')
   const levelName  = urlParams.get('level')
-  headEle.innerHTML = `${arithmeticName} <br> <span style="font-size:18px">level ${levelName}</span>`
+  headEle.innerHTML = `${arithmeticName} `
 
 
+ const  speakTheQuestion = (max,symbol,min) => {
 
-
-const  speakTheQuestion = (max,symbol,min) => {
-
-  
   const utterance = new SpeechSynthesisUtterance(`${max} ${symbol} ${min} is equel to`)
 
   utterance.lang = 'en-US';
@@ -238,8 +235,6 @@ const  answerCheckCorrectOrWrong = (ans) => {
               answerCheckCorrectOrWrong('Correct')
             },1500)
 
-          
-
             setTimeout(()=>{
               
               overlayEle.classList.remove("overlay")
@@ -285,15 +280,15 @@ const  answerCheckCorrectOrWrong = (ans) => {
 
 
 
-if(arithmeticName === "addition" && levelName === "one"){
+if(arithmeticName === "addition" && levelName === "easy"){
  
    arithmeticStages(1,10)
 
-}else if(arithmeticName === "addition" && levelName === "two"){
+}else if(arithmeticName === "addition" && levelName === "medium"){
 
   arithmeticStages(11,100) 
 
-}else if(arithmeticName === "addition" && levelName === "three"){
+}else if(arithmeticName === "addition" && levelName === "hard"){
 
   arithmeticStages(100,1000)
 
@@ -301,45 +296,45 @@ if(arithmeticName === "addition" && levelName === "one"){
 
 
 
-if(arithmeticName === "substraction" && levelName === "one"){
+if(arithmeticName === "substraction" && levelName === "easy"){
 
    arithmeticStages(1,10)
 
-} else if(arithmeticName === "substraction" && levelName === "two"){
+} else if(arithmeticName === "substraction" && levelName === "medium"){
 
   arithmeticStages(11,100) 
 
-} else if(arithmeticName === "substraction" && levelName === "three"){
+} else if(arithmeticName === "substraction" && levelName === "hard"){
 
   arithmeticStages(100,1000)
 
 }
 
 
-if(arithmeticName === "multiplication" && levelName === "one"){
+if(arithmeticName === "multiplication" && levelName === "easy"){
 
   arithmeticStages(1,10)
 
-} else if(arithmeticName === "multiplication" && levelName === "two"){
+} else if(arithmeticName === "multiplication" && levelName === "medium"){
 
  arithmeticStages(11,100) 
 
-} else if(arithmeticName === "multiplication" && levelName === "three"){
+} else if(arithmeticName === "multiplication" && levelName === "hard"){
 
  arithmeticStages(100,1000)
 
 }
 
 
-if(arithmeticName === "division" && levelName === "one"){
+if(arithmeticName === "division" && levelName === "easy"){
 
   arithmeticStages(1,10)
 
-} else if(arithmeticName === "division" && levelName === "two"){
+} else if(arithmeticName === "division" && levelName === "medium"){
 
  arithmeticStages(11,100) 
 
-} else if(arithmeticName === "division" && levelName === "three"){
+} else if(arithmeticName === "division" && levelName === "hard"){
 
  arithmeticStages(100,1000)
 
